@@ -5,7 +5,7 @@
 // State management
 const setupState = {
     currentStep: 1,
-    totalSteps: 5,
+    totalSteps: 6,
     baseUrl: 'acestream://',
     channelBaseUrl: 'acestream://',
     acexyEnabled: false,
