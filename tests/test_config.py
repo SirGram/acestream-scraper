@@ -31,6 +31,7 @@ class TestConfig:
         # Create a temporary config file
         config_data = {
             'base_url': 'acestream://',
+            'channel_base_url': 'acestream://',
             'ace_engine_url': 'http://localhost:6878',
             'rescrape_interval': 24
         }
@@ -108,6 +109,7 @@ class TestConfig:
             
             # Should have merged database settings into file
             assert saved_config['base_url'] == 'acestream://'
+            assert saved_config['channel_base_url'] == 'acestream://'
             assert saved_config['ace_engine_url'] == 'http://localhost:8080'
     
     def test_migrate_to_database(self, reset_config, config_file, mock_settings_repo, app_context):

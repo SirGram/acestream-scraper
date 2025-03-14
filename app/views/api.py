@@ -39,6 +39,7 @@ def get_stats():
         'channels_online': online_channels,
         'channels_offline': total_checked - online_channels,
         'base_url': config.base_url,
+        'channel_base_url': config.channel_base_url,
         'ace_engine_url': config.ace_engine_url,
         'rescrape_interval': config.rescrape_interval
     })

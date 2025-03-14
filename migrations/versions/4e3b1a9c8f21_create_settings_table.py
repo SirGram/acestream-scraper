@@ -33,6 +33,7 @@ def load_existing_config():
     config_file = get_config_path()
     default_config = {
         "base_url": "acestream://",
+        "channel_base_url": "acestream://",	
         "ace_engine_url": "http://127.0.0.1:6878",
         "rescrape_interval": 24
     }
@@ -86,6 +87,7 @@ def upgrade():
                     # Insert settings from config file
                     settings_to_insert = [
                         ('base_url', config.get('base_url')),
+                        ('channel_base_url', config.get('channel_base_url')),
                         ('ace_engine_url', config.get('ace_engine_url')),
                         ('rescrape_interval', str(config.get('rescrape_interval'))),
                         ('setup_completed', 'false')

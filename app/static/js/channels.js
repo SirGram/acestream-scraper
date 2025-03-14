@@ -96,6 +96,9 @@ async function refreshChannelsList(searchTerm = '') {
     try {
         const response = await fetch(`/api/channels?search=${encodeURIComponent(searchTerm)}`);
         const channels = await response.json();
+
+        const stats = await fetchStats();
+        if (stats.channel_base_url) channelBaseUrl = stats.channel_base_url ;
         
         const channelsList = document.getElementById('channelsList');
         if (channelsList) {
@@ -103,7 +106,7 @@ async function refreshChannelsList(searchTerm = '') {
                 <tr>
                     <td>${channel.name}</td>
                     <td>
-                            <a href="acestream://${channel.id}" class="text-decoration-none" title="Open in Acestream player">
+                            <a href="${channelBaseUrl}${channel.id}" class="text-decoration-none" title="Open in Acestream player">
                                 ${channel.id}
                             </a>
                     </td>

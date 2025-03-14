@@ -7,6 +7,7 @@ const setupState = {
     currentStep: 1,
     totalSteps: 5,
     baseUrl: 'acestream://',
+    channelBaseUrl: 'acestream://',
     acexyEnabled: false,
     aceEngineUrl: 'http://localhost:6878',
     rescrapeInterval: 24,
@@ -130,6 +131,13 @@ async function saveConfiguration() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ base_url: setupState.baseUrl })
         });
+
+        // Save channel base URL
+        await fetch('/api/config/channel_base_url', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ channel_base_url: setupState.channelBaseUrl })
+        });
         
         // Save Ace Engine URL
         await fetch('/api/config/ace_engine_url', {
@@ -212,6 +220,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('baseUrlForm').addEventListener('submit', function(e) {
         e.preventDefault();
         setupState.baseUrl = document.getElementById('baseUrl').value;
+        nextStep();
+    });
+
+    // Channel Base URL form submission
+    document.getElementById('channelBaseUrlForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        setupState.channelBaseUrl = document.getElementById('channelBaseUrl').value;
         nextStep();
     });
     

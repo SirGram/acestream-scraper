@@ -36,6 +36,21 @@
 
 <div class="card mb-4">
     <div class="card-body">
+        <h5 class="card-title">Channel Base URL Configuration</h5>
+        <form id="channelBaseUrlForm" class="row g-3 align-items-center">
+            <div class="col-12 col-md-6">
+                <input type="text" class="form-control" id="channelBaseUrlInput" 
+                       placeholder="Enter channel base URL (e.g., acestream://)" required>
+            </div>
+            <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Update Channel Base URL</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
         <h5 class="card-title">Ace Engine Configuration</h5>
         <form id="aceEngineForm" class="row g-3 align-items-center">
             <div class="col-12 col-md-6">
@@ -158,6 +173,10 @@
                 <tr>
                     <th>Base URL</th>
                     <td id="configBaseUrl"></td>
+                </tr>
+                <tr>
+                    <th>Channel Base URL</th>
+                    <td id="configChannelBaseUrl"></td>
                 </tr>
                 <tr>
                     <th>Ace Engine URL</th>

@@ -21,6 +21,7 @@ stats_model = api.model('Stats', {
     'channels_online': fields.Integer(description='Number of online channels'),
     'channels_offline': fields.Integer(description='Number of offline channels'),
     'base_url': fields.String(description='Base URL for playlist generation'),
+    'channel_base_url': fields.String(description='Base URL for channel links'),
     'ace_engine_url': fields.String(description='URL of the Acestream Engine'),
     'rescrape_interval': fields.Integer(description='Hours between automatic rescans'),
     'task_manager_status': fields.String(description='Status of the background task manager')
@@ -67,6 +68,7 @@ class Stats(Resource):
                 'channels_online': online_channels,
                 'channels_offline': total_checked - online_channels,
                 'base_url': config.base_url,
+                'channel_base_url': config.channel_base_url,
                 'ace_engine_url': config.ace_engine_url,
                 'rescrape_interval': config.rescrape_interval,
                 'task_manager_status': task_status

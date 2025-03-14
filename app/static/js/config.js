@@ -12,6 +12,8 @@ async function loadConfigData() {
         // Update system info table - only elements that exist on the config page
         if (document.getElementById('configBaseUrl')) 
             document.getElementById('configBaseUrl').textContent = stats.base_url || 'Not configured';
+        if (document.getElementById('configChannelBaseUrl'))
+            document.getElementById('configChannelBaseUrl').textContent = stats.channel_base_url || 'Not configured';
         if (document.getElementById('configAceEngineUrl'))
             document.getElementById('configAceEngineUrl').textContent = stats.ace_engine_url || 'Not configured';
         if (document.getElementById('configRescrapeInterval'))
@@ -258,6 +260,36 @@ function setupConfigEvents() {
             } catch (error) {
                 console.error('Error:', error);
                 alert('Network error while updating base URL');
+            } finally {
+                hideLoading();
+            }
+        });
+    }
+    // Channel Base URL form
+    const channelBaseUrlForm = document.getElementById('channelBaseUrlForm');
+    if (channelBaseUrlForm) {
+        channelBaseUrlForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const channelBaseUrlInput = document.getElementById('channelBaseUrlInput');
+            const channelBaseUrl = channelBaseUrlInput.value;
+            
+            try {
+                showLoading();
+                const response = await fetch('/api/config/channel_base_url', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ channel_base_url: channelBaseUrl })
+                });
+                
+                if (await handleApiResponse(response, 'Channel Base URL updated successfully')) {
+                    channelBaseUrlInput.value = '';
+                    await loadConfigData();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Network error while updating channel base URL');
             } finally {
                 hideLoading();
             }

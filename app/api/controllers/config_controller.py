@@ -16,6 +16,10 @@ base_url_model = api.model('BaseURL', {
     'base_url': fields.String(required=True, description='Base URL for acestream links')
 })
 
+channel_base_url_model = api.model('ChannelBaseURL', {
+    'channel_base_url': fields.String(required=True, description='Base URL for channel links')
+})
+
 ace_engine_url_model = api.model('AceEngineURL', {
     'ace_engine_url': fields.String(required=True, description='URL for Acestream Engine')
 })
@@ -57,6 +61,25 @@ class BaseURL(Resource):
             config = Config()
             config.base_url = base_url
             return {"message": "Base URL updated successfully"}
+        except Exception as e:
+            api.abort(500, str(e))
+
+@api.route('/channel_base_url')
+class ChannelBaseURL(Resource):
+    @api.doc('update_channel_base_url')
+    @api.expect(channel_base_url_model)
+    def put(self):
+        """Update channel base URL for acestream links."""
+        data = request.json
+        channel_base_url = data.get('channel_base_url')
+        
+        if not channel_base_url:
+            api.abort(400, "channel_base_url is required")
+        
+        try:
+            config = Config()
+            config.channel_base_url = channel_base_url
+            return {"message": "Channel Base URL updated successfully"}
         except Exception as e:
             api.abort(500, str(e))
 

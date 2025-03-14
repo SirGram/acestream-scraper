@@ -25,6 +25,7 @@ class TestConfigMigration:
         mock_repo.get_setting.side_effect = lambda key, default=None: None if key == 'setup_completed' else 'some_value'
         mock_repo.get_all_settings.return_value = {
             'base_url': 'acestream://', 
+            'channel_base_url': 'acestream://',
             'ace_engine_url': 'http://localhost:8080',
             'rescrape_interval': '24'
         }

@@ -258,6 +258,16 @@ class Config:
         self.set('base_url', value)
     
     @property
+    def channel_base_url(self):
+        """Get channel base URL for acestream links."""
+        return self.get('channel_base_url', 'acestream://')
+        
+    @channel_base_url.setter
+    def channel_base_url(self, value):
+        """Set channel base URL for acestream links."""
+        self.set('channel_base_url', value)
+    
+    @property
     def ace_engine_url(self):
         """Get Acestream Engine URL."""
         return self.get('ace_engine_url', 'http://localhost:6878')
@@ -290,6 +300,7 @@ class Config:
                     # Only check for required settings
                     required_settings = [
                         'base_url',
+                        'channel_base_url',
                         'ace_engine_url',
                         'rescrape_interval'
                     ]

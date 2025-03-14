@@ -46,6 +46,13 @@ async function refreshData() {
             if (currentBaseUrlDisplay) currentBaseUrlDisplay.textContent = `Current: ${stats.base_url}`;
             if (sampleUrlDisplay) sampleUrlDisplay.innerHTML = `Sample: <code>${stats.base_url}${'1'.repeat(40)}</code>`;
         }
+        
+        // Update channel base URL info
+        if (stats.channel_base_url) {
+            const currentChannelBaseUrlDisplay = document.getElementById('currentChannelBaseUrlDisplay');
+            const sampleChannelUrlDisplay = document.getElementById('sampleChannelUrlDisplay');
+            if (currentChannelBaseUrlDisplay) currentChannelBaseUrlDisplay.textContent = `Current: ${stats.channel_base_url}`;
+        }
 
         // Update Ace Engine URL info
         if (stats.ace_engine_url) {

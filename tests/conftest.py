@@ -132,6 +132,7 @@ def mock_settings_repo():
     def mock_get(key, default=None):
         settings = {
             "base_url": "http://localhost:6878/ace/getstream?id=",
+            "channel_base_url": "http://localhost:6878/ace/getstream?id=",
             "ace_engine_url": "http://localhost:6878",
             "rescrape_interval": 24
         }
@@ -152,6 +153,7 @@ def config():
     
     # Ensure required attributes exist
     config.base_url = "http://localhost:6878/ace/getstream?id="
+    config.channel_base_url = "http://localhost:6878/ace/getstream?id="
     config.ace_engine_url = "http://localhost:6878"
     config.rescrape_interval = 24
     

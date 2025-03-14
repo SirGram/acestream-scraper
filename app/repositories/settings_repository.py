@@ -10,12 +10,14 @@ class SettingsRepository:
     
     # Add constants for settings keys
     BASE_URL = 'base_url'
+    CHANNEL_BASE_URL = 'channel_base_url'
     ACE_ENGINE_URL = 'ace_engine_url'
     RESCRAPE_INTERVAL = 'rescrape_interval'
     SETUP_COMPLETED = 'setup_completed'
     
     # Add constants for default values
     DEFAULT_BASE_URL = 'acestream://'
+    DEFAULT_CHANNEL_BASE_URL = 'acestream://'
     DEFAULT_ACE_ENGINE_URL = 'http://localhost:6878'
     DEFAULT_RESCRAPE_INTERVAL = '24'
     
@@ -113,6 +115,7 @@ class SettingsRepository:
         """Set up default settings if they don't exist."""
         default_settings = {
             self.BASE_URL: self.DEFAULT_BASE_URL,
+            self.CHANNEL_BASE_URL: self.DEFAULT_CHANNEL_BASE_URL,
             self.ACE_ENGINE_URL: self.DEFAULT_ACE_ENGINE_URL,
             self.RESCRAPE_INTERVAL: self.DEFAULT_RESCRAPE_INTERVAL
         }
